@@ -24,7 +24,7 @@
     </div>
 
     <div class="col-end-10">
-      <%= link_to '削除', "#", class: "rounded-lg py-3 px-5 bg-red-500 text-white inline-block font-medium cursor-pointer" %>
+      <%= link_to '削除', user, class: "rounded-lg py-3 px-5 bg-red-500 text-white inline-block font-medium cursor-pointer", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
     </div>
   </div>
 <% end %>
