@@ -9,6 +9,15 @@
   </div>
 
   <div id="users" class="min-w-full">
-    <%= render @users %>
+    <% @users.each do |user| %>
+      <div>
+        <%= turbo_frame_tag user do %>
+          <p class="my-5 ">
+            <%= link_to user.name, edit_user_path(user), class: "rounded-lg px-5 bg-blue-100 inline-block" %>
+          </p>
+        <% end %>
+        <hr class="mt-6">
+      </div>
+    <% end %>
   </div>
 </div>
