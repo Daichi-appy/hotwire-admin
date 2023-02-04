@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash.now.notice = "ユーザーを削除しました"
+    flash.now.alert = "ユーザーを削除しました"
   end
 
   private
