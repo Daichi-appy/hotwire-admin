@@ -4,22 +4,22 @@
   </div>
 
   <div class="rounded-lg py-3 px-5 bg-blue-500 inline-block font-medium cursor-pointer">
-    <%= link_to '企業一覧', companies_path %>
+    <%= link_to 'ユーザー一覧', users_path %>
   </div>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Users</h1>
-    <%= link_to 'New user', new_user_path,
+    <h1 class="font-bold text-4xl">Companies</h1>
+    <%= link_to 'New Company', new_company_path,
         class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium",
-        data: { turbo_frame: "new_user" }
+        data: { turbo_frame: "new_company" }
     %>
   </div>
 
   
   <div class="min-w-full">
-    <%= turbo_frame_tag "new_user" %>
-    <div id="users">
-      <%= render @users %>
+    <%= turbo_frame_tag "new_company" %>
+    <div id="companies">
+      <%= render @companies %>
     </div>
   </div>
 </div>

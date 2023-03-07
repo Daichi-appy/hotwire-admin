@@ -1,0 +1,53 @@
+<%= turbo_frame_tag company do %>
+  <%= form_with(model: company, class: "contents", data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |form| %>
+    <% if company.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+        <ul>
+          <% company.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="my-5">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :description %>
+      <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <template data-nested-form-target="template">
+      <%= form.fields_for :company_users, CompanyUser.new, child_index: 'NEW_RECORD' do |company_user_fields| %>
+        <%= render "company_user_form", f: company_user_fields %>
+      <% end %>
+    </template>
+
+    <%= form.fields_for :company_users do |company_user_fields| %>
+      <%= render "company_user_form", f: company_user_fields %>
+    <% end %>
+
+    <div data-nested-form-target="target"></div>
+
+    <div>
+      <button type="button" data-action="nested-form#add" class="rounded-lg py-3 px-5 bg-green-400 text-white">Add User</button>
+    </div>
+
+    <div class="inline">
+      <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+
+    <div class="inline">
+      <%= link_to 'x', companies_path, class: "rounded-lg py-3 px-5 bg-red-600 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+
+    <div>
+      <hr class="mt-6">
+    </div>
+  <% end %>
+<% end %>
