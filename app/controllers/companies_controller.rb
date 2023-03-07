@@ -29,6 +29,6 @@ class CompaniesController < ApplicationController
     end
 
     def company_params
-      params.require(:company).permit(:name, :description)
+      params.require(:company).permit(:name, :description, company_users_attributes: [:id, :user_id, :_destroy])
     end
 end

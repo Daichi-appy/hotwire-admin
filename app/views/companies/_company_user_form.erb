@@ -1,0 +1,8 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <%= f.label :user %>
+  <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :name), {}, { class: "form-control" } %>
+
+  <button type="button" data-action="nested-form#remove" class="rounded-lg py-3 px-5 bg-red-600 text-white inline-block font-medium cursor-pointer">x</button>
+
+  <%= f.hidden_field :_destroy %>
+</div>
